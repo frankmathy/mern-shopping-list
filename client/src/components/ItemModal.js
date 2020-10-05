@@ -12,7 +12,6 @@ import {
 
 import { useDispatch } from 'react-redux';
 import { addItem } from '../actions/itemActions';
-import { v1 as uuid } from 'uuid';
 
 export const ItemModal = () => {
   const dispatch = useDispatch();
@@ -27,7 +26,6 @@ export const ItemModal = () => {
   const onSubmit = e => {
     e.preventDefault();
     const newItem = {
-      id: uuid(),
       name: name
     };
     dispatch(addItem(newItem));
