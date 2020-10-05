@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteItem } from '../actions/itemActions';
 
 export const ShoppingList = () => {
   const items = useSelector(state => state.item.items);
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Button
@@ -30,7 +33,7 @@ export const ShoppingList = () => {
                   color="danger"
                   size="sm"
                   onClick={() => {
-                    //setItems(items.filter(item => item.id !== id));
+                    dispatch(deleteItem(id));
                   }}
                 >
                   X
