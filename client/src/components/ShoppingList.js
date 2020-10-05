@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { v1 as uuid } from 'uuid';
+import { useSelector } from 'react-redux';
 
 export const ShoppingList = () => {
-  const [items, setItems] = useState([
-    { id: uuid(), name: 'Eggs' },
-    { id: uuid(), name: 'Milk' },
-    { id: uuid(), name: 'Steak' },
-    { id: uuid(), name: 'Water' }
-  ]);
-
+  const items = useSelector(state => state.item.items);
   return (
     <Container>
       <Button
@@ -19,7 +13,7 @@ export const ShoppingList = () => {
         onClick={() => {
           const name = prompt('Enter Item');
           if (name) {
-            setItems([...items, { id: uuid(), name: name }]);
+            // setItems([...items, { id: uuid(), name: name }]);
           }
         }}
       >
@@ -36,7 +30,7 @@ export const ShoppingList = () => {
                   color="danger"
                   size="sm"
                   onClick={() => {
-                    setItems(items.filter(item => item.id !== id));
+                    //setItems(items.filter(item => item.id !== id));
                   }}
                 >
                   X
