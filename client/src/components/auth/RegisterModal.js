@@ -14,10 +14,12 @@ import {
 
 import { useSelector, useDispatch } from 'react-redux';
 import { register } from '../../actions/authActions';
+import { clearErrors } from '../../actions/errorActions';
 
 export const RegisterModal = () => {
   const dispatch = useDispatch();
   const error = useSelector(state => state.error);
+  const auth = useSelector(state => state.auth);
 
   const [modal, setModal] = useState(false);
   const [name, setName] = useState('');
@@ -33,7 +35,14 @@ export const RegisterModal = () => {
     }
   }, [error]);
 
+  useEffect(() => {
+    if (modal && auth.isAuthenticated) {
+      toggle();
+    }
+  }, [auth, modal]);
+
   const toggle = () => {
+    dispatch(clearErrors());
     setModal(!modal);
   };
 
