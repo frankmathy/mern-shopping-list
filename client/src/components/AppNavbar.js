@@ -9,6 +9,7 @@ import {
   Container
 } from 'reactstrap';
 import RegisterModal from './auth/RegisterModal';
+import Logout from './auth/Logout';
 
 const AppNavbar = props => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +24,9 @@ const AppNavbar = props => {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <RegisterModal>Register</RegisterModal>
+              </NavItem>
+              <NavItem>
+                <Logout>Logout</Logout>
               </NavItem>
             </Nav>
           </Collapse>

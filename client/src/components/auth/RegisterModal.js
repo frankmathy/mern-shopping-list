@@ -51,7 +51,6 @@ export const RegisterModal = () => {
     console.log('Onclick pressed');
     const newUser = { name, email, password };
     dispatch(register(newUser));
-    //toggle();
   };
 
   return (
