@@ -37,9 +37,10 @@ export const RegisterModal = () => {
 
   useEffect(() => {
     if (modal && auth.isAuthenticated) {
-      toggle();
+      dispatch(clearErrors());
+      setModal(!modal);
     }
-  }, [auth, modal]);
+  }, [auth, modal, dispatch]);
 
   const toggle = () => {
     dispatch(clearErrors());
@@ -66,6 +67,7 @@ export const RegisterModal = () => {
               <Input
                 type="text"
                 name="name"
+                autoComplete="name"
                 id="name"
                 placeholder="Name"
                 className="mb-3"
@@ -75,6 +77,7 @@ export const RegisterModal = () => {
               <Input
                 type="text"
                 name="email"
+                autoComplete="email"
                 id="email"
                 placeholder="Email"
                 className="mb-3"
@@ -84,6 +87,7 @@ export const RegisterModal = () => {
               <Input
                 type="password"
                 name="password"
+                autoComplete="off"
                 id="password"
                 placeholder="Password"
                 className="mb-3"

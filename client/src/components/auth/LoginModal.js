@@ -26,6 +26,11 @@ export const LoginModal = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState();
 
+  const toggle = () => {
+    dispatch(clearErrors());
+    setModal(!modal);
+  };
+
   useEffect(() => {
     if (error.id === 'LOGIN_FAIL') {
       setMessage(error.msg.msg);
@@ -36,14 +41,10 @@ export const LoginModal = () => {
 
   useEffect(() => {
     if (modal && auth.isAuthenticated) {
-      toggle();
+      dispatch(clearErrors());
+      setModal(!modal);
     }
-  }, [auth, modal]);
-
-  const toggle = () => {
-    dispatch(clearErrors());
-    setModal(!modal);
-  };
+  }, [auth, modal, dispatch]);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -68,6 +69,7 @@ export const LoginModal = () => {
                 type="text"
                 name="email"
                 id="email"
+                autoComplete="email"
                 placeholder="Email"
                 className="mb-3"
                 onChange={e => setEmail(e.target.value)}
@@ -77,6 +79,7 @@ export const LoginModal = () => {
                 type="password"
                 name="password"
                 id="password"
+                autoComplete="current-password"
                 placeholder="Password"
                 className="mb-3"
                 onChange={e => setPassword(e.target.value)}
