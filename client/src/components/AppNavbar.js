@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   Collapse,
   Navbar,
@@ -14,8 +14,6 @@ import LoginModal from './auth/LoginModal';
 import Logout from './auth/Logout';
 
 const AppNavbar = props => {
-  const dispatch = useDispatch();
-  const error = useSelector(state => state.error);
   const auth = useSelector(state => state.auth);
 
   const [isOpen, setIsOpen] = useState(false);
